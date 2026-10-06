@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* Light: ice-white with navy + red hockey accents. Dark follows the phone/OS setting. */
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-2: #eaf0f7;
+  --border: #d5dde8;
+  --text: #0f1b2d;
+  --muted: #5b6b82;
+  --primary: #1d3a6e;
+  --primary-hover: #284b8a;
+  --on-primary: #ffffff;
+  --accent: #c8102e;
+  --success: #1c7c4b;
+  --warning: #9a6200;
+  --danger: #b42318;
+  --focus: #3b82f6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --surface: #131c2e;
+    --surface-2: #1b2740;
+    --border: #2a3754;
+    --text: #e6edf7;
+    --muted: #9aaac3;
+    --primary: #7fa7e6;
+    --primary-hover: #9bbcf0;
+    --on-primary: #0b1220;
+    --accent: #ff5a6e;
+    --success: #4ccb8a;
+    --warning: #f0b44c;
+    --danger: #ff7a6b;
+    --focus: #7fa7e6;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-on-primary: var(--on-primary);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-geist-sans);
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@utility card {
+  @apply rounded-xl border border-border bg-surface p-4;
+}
+@utility btn {
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-primary text-on-primary hover:bg-primary-hover;
+}
+@utility btn-secondary {
+  @apply btn border border-border bg-surface text-text hover:bg-surface-2;
+}
+@utility btn-danger {
+  @apply btn border border-danger/40 bg-surface text-danger hover:bg-danger/10;
+}
+@utility btn-sm {
+  /* modifier used alongside btn-primary/-secondary/-danger, so it must win */
+  @apply min-h-9! px-3! text-xs!;
+}
+@utility input {
+  @apply block w-full min-h-11 rounded-lg border border-border bg-surface px-3 py-2 text-base text-text placeholder:text-muted;
+}
+@utility label {
+  @apply mb-1 block text-sm font-medium;
+}
+@utility hint {
+  @apply mt-1 text-xs text-muted;
+}
+@utility badge {
+  @apply inline-flex items-center rounded-full bg-surface-2 px-2 py-0.5 text-xs font-medium text-muted;
+}
+@utility link {
+  @apply font-medium text-primary underline-offset-2 hover:underline;
+}
+@utility h1 {
+  @apply text-2xl font-bold tracking-tight;
+}
+@utility h2 {
+  @apply text-lg font-semibold;
+}
+
+/* Leaflet controls follow the theme */
+.leaflet-container {
+  font: inherit;
+  background: var(--surface-2);
+}
+@media (prefers-color-scheme: dark) {
+  .leaflet-tile-pane {
+    filter: brightness(0.75) contrast(1.1) saturate(0.8);
+  }
+  .leaflet-popup-content-wrapper,
+  .leaflet-popup-tip,
+  .leaflet-bar a {
+    background: var(--surface);
+    color: var(--text);
+  }
+}
