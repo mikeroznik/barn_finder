@@ -56,17 +56,16 @@ There's no Google API key: addresses link out to Google Maps, but maps, geocodin
 
 ## Getting started
 
-See **[SETUP.md](SETUP.md)** for step-by-step instructions: creating the Supabase project, running the SQL files, configuring authentication emails, and connecting the app.
+The app is deployed to **Vercel** with a **Supabase** backend. See **[SETUP.md](SETUP.md)** for step-by-step instructions:
 
-Quick version, once Supabase is set up:
+1. Create a Supabase project and run the SQL files
+2. Import the repo into Vercel and set two environment variables:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+3. Point Supabase Auth at your Vercel URL and update the email templates
+4. Sign up with the admin email you configured
 
-```bash
-cp .env.example .env.local   # then fill in your Supabase URL and publishable key
-npm install
-npm run dev
-```
-
-Then open http://localhost:3000.
+Running locally is optional; see the end of SETUP.md.
 
 ### Scripts
 
